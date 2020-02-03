@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">UmpireBuddy</string>
+    <string name="strike_button">Strike!</string>
+    <string name="ball_button">Ball!</string>
+    <string name="reset_button">Reset</string>
+    <string name="strikes_label">Strikes: %1$d</string>
+    <string name="balls_label">Balls: %1$d</string>
+</resources>
