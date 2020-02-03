@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     private Button mBallButton;
     private Button mStrikeButton;
     private Button mResetButton;
+    private Button mExitButton;
     private TextView mBallCountView;
     private TextView mStrikeCountView;
     private int mBallCount;
@@ -52,7 +53,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-            resetCountView();
+        mExitButton = (Button) findViewById(R.id.exit_button);
+        mExitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                System.exit(0);
+            }
+        });
+
+        resetCountView();
         }
 
         private void updateCountView() {
