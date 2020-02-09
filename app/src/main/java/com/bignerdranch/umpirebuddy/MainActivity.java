@@ -1,7 +1,9 @@
 package com.bignerdranch.umpirebuddy;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -67,7 +69,11 @@ public class MainActivity extends AppCompatActivity {
 
         private void updateCountView() {
 
-            if (mBallCount == 4 || mStrikeCount == 3) {
+            if (mBallCount == 4) {
+                alertDialog("Ball!", "Advance the runner and scoff at the pitcher!");
+                resetCountView();
+            } else if (mStrikeCount == 3) {
+                alertDialog("Strike!", "Strikeout! Praise the pitcher!");
                 resetCountView();
             }
             mStrikeCountView.setText(getString(R.string.strikes_label, mStrikeCount));
@@ -78,5 +84,23 @@ public class MainActivity extends AppCompatActivity {
             mBallCount = 0;
             mStrikeCount = 0;
             updateCountView();
+        }
+
+        private void alertDialog(String title, String message) {
+            AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+            alertDialog.setTitle(title);
+            alertDialog.setMessage(message);
+            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                    new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    });
+            alertDialog.show();
+        }
+
+        public void aboutActivity(View view) {
+            alertDialog("About", "Umpire Buddy 2.0\nDeveloper: Alex Banning");
         }
 }
